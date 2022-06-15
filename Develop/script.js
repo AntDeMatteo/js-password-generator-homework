@@ -2,15 +2,17 @@
 
 // Global Variables
 
-var upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-var special = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')']
+var upperCaseArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+var lowerCaseArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+var numbersArr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+var specialArr = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')']
 
 var generateBtn = document.querySelector("#generate");
 
+var passwordBase=[]
+
 // Function for user input
-function writePassword() {
+function choices() {
   var passwordLength = prompt('Password must contain length from 8 to 128 characters.');
   if (passwordLength < 8 || passwordLength > 128) {
     passwordLength = alert("Character count must be between 8 and 128");
@@ -44,7 +46,7 @@ function writePassword() {
       lowerCase: lowerCaseCharacters,
     };
 
-    return userInput;
+    generatePassword(userInput);
 
   };
 
@@ -54,12 +56,20 @@ function writePassword() {
     // password += chars.substring(randomNumber, randomNumber + 1);
   }
 
-  function generatePassword() {
-    var choices = choices();
+  function generatePassword(userChoices) {
+    console.log(userChoices)
+    console.log(userChoices.special)
+    console.log(userChoices.numbers)
+    console.log(userChoices.upperCase)
+    console.log(userChoices.lowerCase)
 
-    var charsConcat = 
-    var charsGuarantee =
-    var charsPassword =
+    // if user wants special, then i'll add special characters to my password base,
+    if (userChoices.special) {
+      passwordBase = passwordBase.concat(specialArr)
+      console.log(passwordBase)
+    }
+    // I'll probably check that out with all the other conditions
+    // I'll probably use that password base to generate a random password
 
     
   }
@@ -80,4 +90,4 @@ function writePassword() {
 // var password = "";
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", choices);
