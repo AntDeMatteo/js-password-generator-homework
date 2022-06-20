@@ -46,14 +46,22 @@ function choices() {
       lowerCase: lowerCaseCharacters,
     };
 
-    generatePassword(userInput);
+    generatePassword (userInput);
 
   };
 
-  function randomChar(array) {
+  function randomChar(array,passLength) {
+    var realBase = array.join("");
+    console.log(realBase)
+    console.log(passLength)
     var randomNumber = Math.floor(Math.random() * array.length);
-    return array(randomNumber);
+    return array[randomNumber];
     // password += chars.substring(randomNumber, randomNumber + 1);
+
+ 
+    // var passwordText = document.querySelector("#password");
+  
+    // passwordText.value = password;
   }
 
   function generatePassword(userChoices) {
@@ -68,26 +76,34 @@ function choices() {
       passwordBase = passwordBase.concat(specialArr)
       console.log(passwordBase)
     }
+    if (userChoices.numbers) {
+      passwordBase = passwordBase.concat(numbersArr)
+      console.log(passwordBase)
+    }
+    if (userChoices.upperCase) {
+      passwordBase = passwordBase.concat(upperCaseArr)
+      console.log(passwordBase)
+    }
+    if (userChoices.lowerCase) {
+      passwordBase = passwordBase.concat(lowerCaseArr)
+      console.log(passwordBase)
+    }
+    return (passwordBase);
+  };
+
+  function copyPassword () {
+    var password = generatePassword();
+    console.log(password);
+    var passwordText = document.querySelector("#password");
+    console.log(passwordText)
+
+    passwordText.value = password;
+  }
+
+    // randomChar(passwordBase,userChoices.length)
     // I'll probably check that out with all the other conditions
     // I'll probably use that password base to generate a random password
 
-    
-  }
-
-
-
-  // var passwordText = document.querySelector("#password");
-
-  // passwordText.value = password;
-
-
-
-
-
-
-// var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-// var passwordLength = 12;
-// var password = "";
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", choices);
