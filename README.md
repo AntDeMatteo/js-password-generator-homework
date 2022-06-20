@@ -8,3 +8,4 @@ The password generator application was designed to help users select a secure, r
 
 # Deployment Link
 
+https://antdematteo.github.io/js-password-generator-homework/
